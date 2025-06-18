@@ -1,0 +1,47 @@
+# General Data Settings
+data_path: "data/processed_data.csv"
+start_date: "2010-01-01"
+end_date: "2023-12-31"
+train_end_date: "2021-12-31" # Date to split training and testing data
+
+# Feature Engineering
+# Add any relevant feature engineering parameters here
+# e.g., window_sizes: [5, 10, 20]
+
+# Model Agnostic Settings
+plot_path: "model_outputs/plots" # Directory to save plots
+risk_free_rate: 0.01 # Annualized risk-free rate for Sharpe ratio
+
+# Model Specific Configurations
+run_var_model: true
+var_model:
+  lag_order: 5 # VAR model lag order, can be an integer or determined by AIC/BIC
+  irf_periods: 10 # Impulse Response Function periods
+  # Add other VAR specific parameters if needed
+
+run_ar_model: true
+ar_model:
+  lag_order: 5 # AR model lag order, can be an integer or determined by AIC/BIC
+  # Add other AR specific parameters if needed
+
+run_lstm_model: true
+lstm_model:
+  sequence_length: 60 # Number of past days' data to use for predicting next step
+  epochs: 100
+  batch_size: 32
+  lstm_units: 50 # Number of units in LSTM layer
+  dropout_rate: 0.2
+  validation_ratio: 0.15 # Proportion of training data to use for validation
+  early_stopping_patience: 10 # Number of epochs with no improvement to wait before stopping
+  # Add other LSTM specific parameters if needed
+
+# DFM Model (Example, if you were to add it)
+# run_dfm_model: false
+# dfm_model:
+#   factors: 5
+#   factor_orders: 2
+#   error_order: 1
+
+# Evaluation Settings
+# Add any specific evaluation parameters if needed
+# e.g. cross_validation_folds: 5
